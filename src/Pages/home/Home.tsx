@@ -4,12 +4,12 @@ const Home = () => {
   const units = [
     {
       title: "Unit 1: Introduction to Computing Systems",
-      url: "https://gamma.app/docs/Introduction-to-Computing-Systems-adha70ell695s52",
+      url: "https://computing-systems-uzwkgc3.gamma.site/",
       image: "/numbers/1.png",
     },
     {
       title: "Unit 2: Computing Devices & Digital Displays",
-      url: "https://gamma.app/docs/Computing-Devices-Understanding-Digital-Displays-ma3bbnqy5258ebq?mode=doc",
+      url: "https://computing-devices-3297nk8.gamma.site/",
       image: "/numbers/2.png",
     },
     {
@@ -19,27 +19,27 @@ const Home = () => {
     },
     {
       title: "Unit 4: Computer Networking Fundamentals",
-      url: "https://gamma.app/docs/Computer-Networking-Fundamentals-4i7w7qtta3g58cy?mode=doc",
+      url: "https://computer-networking-0t096ih.gamma.site/",
       image: "/numbers/4.png",
     },
     {
       title: "Unit 5: Information Technology Journey",
-      url: "https://gamma.app/docs/Information-Technology-Journey-fhrsk0z0iw8lroe?mode=doc",
+      url: "https://it-journey-1g6l9it.gamma.site/",
       image: "/numbers/5.png",
     },
     {
       title: "Unit 6: Web Browsing",
-      url: "https://gamma.app/docs/Web-Browsing-Unit-9-yezgik24emta1q8?mode=doc",
+      url: "https://web-browsing-x8ovl2f.gamma.site/",
       image: "/numbers/6.png",
     },
     {
       title: "Unit 7: Databases vs Spreadsheets",
-      url: "https://gamma.app/docs/Databases-vs-Spreadsheets-o8a61hby3h3euq7?mode=doc",
+      url: "https://databases-vs-spreadsheet-cg0otp9.gamma.site/",
       image: "/numbers/7.png",
     },
     {
       title: "Unit 8: Desktop Publishing",
-      url: "https://gamma.app/docs/Desktop-Publishing-ecazhil3kexzpd3?mode=doc",
+      url: "https://desktop-publishing-guide-i9yccct.gamma.site/",
       image: "/numbers/8.png",
     },
     {
