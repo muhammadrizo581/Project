@@ -1,13 +1,15 @@
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
-import { BrowserRouter } from 'react-router-dom'
-import { DarkModeProvider } from './context/DarkModeContext.tsx';
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.tsx";
+import { BrowserRouter } from "react-router-dom";
+import { DarkModeProvider } from "./context/DarkModeContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
-  <DarkModeProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </DarkModeProvider>
+  
+    <DarkModeProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </DarkModeProvider>
+  
 );

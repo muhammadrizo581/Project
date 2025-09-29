@@ -36,13 +36,7 @@ const About = () => {
         >
           ℹ️ About This Project
         </h1>
-        <p className="text-lg mb-8 leading-relaxed text-gray-200 dark:text-gray-300">
-          Ushbu loyiha sizga IT fanidan dars materiallari, o‘yinlar va
-          interaktiv resurslarni taqdim etadi.
-          <br />
-          Videoni fon sifatida ishlatib, foydalanuvchiga zamonaviy va chiroyli
-          interfeys taqdim etamiz.
-        </p>
+        
 
         {/* Call to action */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

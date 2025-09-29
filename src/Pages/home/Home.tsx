@@ -55,14 +55,7 @@ const Home = () => {
       <h1 className="text-5xl font-extrabold text-blue-700 dark:text-yellow-400 mb-6 drop-shadow-lg">
         💻 IT Learning Resources
       </h1>
-      <p className="text-gray-700 dark:text-gray-300 max-w-2xl mb-12 text-lg leading-relaxed">
-        Ushbu platformada siz IT fanidan barcha asosiy dars materiallari va
-        qo‘shimcha resurslarni topishingiz mumkin. Har bir bo‘lim alohida{" "}
-        <span className="text-blue-600 dark:text-yellow-400 font-semibold">
-          Unit
-        </span>{" "}
-        ko‘rinishida joylashtirilgan.
-      </p>
+
 
       {/* Units grid */}
       <div className="w-full max-w-6xl text-left mb-16">
