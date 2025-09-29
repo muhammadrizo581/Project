@@ -1,17 +1,23 @@
-import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
 import { useDarkMode } from "../../context/DarkModeContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { darkMode, toggleDarkMode } = useDarkMode();
+  const location = useLocation();
 
   const navItems = [
     { title: "About", path: "/about" },
     { title: "Jeopardy Game", path: "/jeopardy1" },
     { title: "PDF", path: "/pdf" },
   ];
+
+  // sahifa o‘zgarsa menyuni yopish
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
   return (
     <nav
@@ -22,6 +28,7 @@ export default function Navbar() {
       }`}
     >
       <div className="flex justify-between items-center max-w-7xl mx-auto px-6 py-4">
+        {/* Logo */}
         <Link
           to="/"
           className="text-2xl font-extrabold tracking-wide relative group"
@@ -51,6 +58,7 @@ export default function Navbar() {
 
         {/* Actions */}
         <div className="flex items-center space-x-4">
+          {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
             className="text-xl hover:scale-110 transition"
@@ -68,35 +76,40 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div
-          className={`md:hidden flex flex-col items-center space-y-4 py-6 shadow-inner transition-all duration-500 ${
-            darkMode ? "bg-gray-800" : "bg-blue-700"
+      {/* Mobile Menu (slide-down) */}
+      <div
+        className={`fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center space-y-6 text-lg font-medium transform transition-transform duration-500 ${
+          isOpen
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-full opacity-0 pointer-events-none"
+        } ${darkMode ? "bg-gray-900 text-gray-100" : "bg-blue-700 text-white"}`}
+      >
+        {navItems.map((item, i) => (
+          <NavLink
+            key={i}
+            to={item.path}
+            className={({ isActive }) =>
+              `px-6 py-3 rounded-lg transition text-xl ${
+                isActive
+                  ? "font-semibold text-yellow-300"
+                  : "hover:text-yellow-200"
+              }`
+            }
+          >
+            {item.title}
+          </NavLink>
+        ))}
+        <Link
+          to="/"
+          className={`mt-8 px-6 py-3 rounded-lg shadow-md transition ${
+            darkMode
+              ? "bg-yellow-400 text-gray-900 hover:bg-yellow-500"
+              : "bg-yellow-500 text-white hover:bg-yellow-600"
           }`}
         >
-          {navItems.map((item, i) => (
-            <NavLink
-              key={i}
-              to={item.path}
-              onClick={() => setIsOpen(false)}
-              className={({ isActive }) =>
-                `w-full text-center py-3 rounded-lg transition text-lg ${
-                  isActive
-                    ? darkMode
-                      ? "bg-gray-900 text-yellow-300 font-semibold"
-                      : "bg-blue-900 text-yellow-300 font-semibold"
-                    : darkMode
-                    ? "hover:bg-gray-700"
-                    : "hover:bg-blue-800"
-                }`
-              }
-            >
-              {item.title}
-            </NavLink>
-          ))}
-        </div>
-      )}
+          ⬅️ Back to Home
+        </Link>
+      </div>
     </nav>
   );
 }
