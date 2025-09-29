@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
 import { useDarkMode } from "../../context/DarkModeContext";
 
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { darkMode, toggleDarkMode } = useDarkMode();
@@ -31,8 +32,9 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           to="/"
-          className="text-2xl font-extrabold tracking-wide relative group"
+          className="text-2xl font-extrabold tracking-wide relative group flex gap-2 items-center"
         >
+          <img src="/icon.png" alt="" className="size-[40px] "/>
           Resources
           <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-yellow-300 group-hover:w-full transition-all duration-300"></span>
         </Link>

@@ -227,7 +227,7 @@ const QuizGame1 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+    <div className="min-h-screen flex items-center justify-center px-4">
       <div className="bg-white shadow-md rounded-2xl p-8 max-w-2xl w-full">
         {!finished ? (
           <>
