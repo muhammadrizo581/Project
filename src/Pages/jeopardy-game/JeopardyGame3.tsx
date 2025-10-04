@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDarkMode } from "../../context/DarkModeContext";
 
 type Question = {
   category: string;
@@ -98,15 +99,13 @@ const questions: Question[] = [
   },
   {
     category: "Programming",
-    question:
-      "Which programming language is known as the 'mother of all languages'?",
+    question: "Which programming language is known as the 'mother of all languages'?",
     options: ["C", "Assembly", "Java", "Python"],
     correct: "C",
   },
   {
     category: "Programming",
-    question:
-      "What is the runtime environment for JavaScript outside browsers?",
+    question: "What is the runtime environment for JavaScript outside browsers?",
     options: ["JVM", "Node.js", "React", "Docker"],
     correct: "Node.js",
   },
@@ -176,73 +175,95 @@ const questions: Question[] = [
   },
 ];
 
-const QuizGame3 = () => {
+export default function QuizGame3() {
+  const { darkMode } = useDarkMode();
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState({ correct: 0, wrong: 0 });
   const [finished, setFinished] = useState(false);
 
   const handleAnswer = (answer: string) => {
-    if (answer === questions[current].correct) {
+    if (answer === questions[current].correct)
       setScore((prev) => ({ ...prev, correct: prev.correct + 1 }));
-    } else {
-      setScore((prev) => ({ ...prev, wrong: prev.wrong + 1 }));
-    }
+    else setScore((prev) => ({ ...prev, wrong: prev.wrong + 1 }));
 
-    if (current + 1 < questions.length) {
-      setCurrent(current + 1);
-    } else {
-      setFinished(true);
-    }
+    if (current + 1 < questions.length) setCurrent(current + 1);
+    else setFinished(true);
   };
 
+  const progress = ((current + 1) / questions.length) * 100;
+
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-      <div className="bg-white shadow-md rounded-2xl p-8 max-w-2xl w-full">
+    <div
+      className={`min-h-screen flex items-center justify-center px-4 transition-colors duration-300 ${
+        darkMode ? "bg-gray-900 text-gray-100" : "bg-red-50 text-gray-900"
+      }`}
+    >
+      <div
+        className={`rounded-2xl shadow-xl p-8 w-full max-w-2xl transition-colors duration-300 ${
+          darkMode ? "bg-gray-800" : "bg-white"
+        }`}
+      >
+        {/* Progress bar */}
+        <div className="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-3 mb-6">
+          <div
+            className="bg-red-500 h-3 rounded-full transition-all duration-300"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+
         {!finished ? (
           <>
-            <h2 className="text-lg font-semibold text-gray-600 mb-2">
+            <h2 className="text-lg font-semibold mb-2">
               Category:{" "}
-              <span className="text-red-600 font-bold">
+              <span className="text-red-600 dark:text-yellow-400 font-bold">
                 {questions[current].category}
               </span>
             </h2>
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">
+
+            <h3 className="text-2xl sm:text-3xl font-bold mb-6 leading-snug">
               {questions[current].question}
             </h3>
-            <div className="grid grid-cols-1 gap-3">
+
+            <div className="grid gap-4 mb-6">
               {questions[current].options.map((opt, i) => (
                 <button
                   key={i}
                   onClick={() => handleAnswer(opt)}
-                  className="bg-gray-200 hover:bg-red-100 text-gray-800 px-4 py-3 rounded-lg shadow transition text-left"
+                  className={`px-5 py-3 rounded-lg text-left font-medium shadow transition transform hover:scale-[1.02] ${
+                    darkMode
+                      ? "bg-gray-700 hover:bg-red-700 text-gray-100"
+                      : "bg-red-100 hover:bg-red-200 text-gray-800"
+                  }`}
                 >
                   {opt}
                 </button>
               ))}
             </div>
-            <p className="mt-6 text-gray-500 text-sm">
+
+            <p className="text-center text-sm opacity-80 mb-4">
               Question {current + 1} of {questions.length}
             </p>
           </>
         ) : (
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-red-600 mb-4">
-              🎉 Quiz Finished!
+          <div className="text-center animate-fade-in">
+            <h2 className="text-3xl font-extrabold text-red-500 mb-4">
+              🎯 Quiz Completed!
             </h2>
-            <p className="text-lg text-gray-700 mb-2">
-              ✅ Correct Answers: {score.correct}
+            <p className="text-lg">
+              ✅ Correct: {score.correct} / ❌ Wrong: {score.wrong}
             </p>
-            <p className="text-lg text-gray-700 mb-2">
-              ❌ Wrong Answers: {score.wrong}
+            <p className="mt-2 font-semibold text-xl">
+              Final Score:{" "}
+              <span className="text-red-600 dark:text-yellow-400">
+                {score.correct} / {questions.length}
+              </span>
             </p>
-            <p className="font-bold text-xl text-gray-800">
-              Final Score: {score.correct} / {questions.length}
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 italic">
+              🧠 Great effort! Keep practicing and challenging yourself.
             </p>
           </div>
         )}
       </div>
     </div>
   );
-};
-
-export default QuizGame3;
+}

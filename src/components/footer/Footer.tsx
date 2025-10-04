@@ -6,174 +6,124 @@ import {
   FaLinkedin,
   FaGithub,
 } from "react-icons/fa";
+import { useDarkMode } from "../../context/DarkModeContext";
 
 const Footer = () => {
+  const { darkMode } = useDarkMode();
+
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-6 md:pt-12 pb-4 md:pb-6 mt-10 md:mt-20 text-sm">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-        {/* Column 1: Logo + About */}
+    <footer
+      className={`transition-colors duration-500 mt-16 ${
+        darkMode ? "bg-gray-900 text-gray-300" : "bg-gray-100 text-gray-700"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8 text-center md:text-left">
+        {/* 🔹 Logo va qisqacha ma’lumot */}
         <div>
-          <h2 className="text-xl md:text-2xl font-extrabold text-white mb-3 md:mb-4">
-            Resources
-          </h2>
-          <p className="leading-relaxed text-xs md:text-sm">
-            Ushbu platforma sizga IT fanidan dars materiallari, interaktiv
-            o‘yinlar va foydali resurslarni taqdim etadi.
+          <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+            <img src="/icon.png" alt="logo" className="size-[36px]" />
+            <h2
+              className={`text-xl font-extrabold ${
+                darkMode ? "text-yellow-400" : "text-blue-700"
+              }`}
+            >
+              Resources
+            </h2>
+          </div>
+          <p className="text-sm leading-relaxed">
+            IT ta’lim resurslari, o‘yinlar va materiallar — hammasi bitta joyda.
           </p>
         </div>
 
-        {/* Column 2: Quick Links */}
+        {/* 🔹 Tezkor linklar */}
         <div>
-          <h3 className="text-base md:text-lg font-semibold text-white mb-3 md:mb-4">
+          <h3
+            className={`font-semibold mb-3 ${
+              darkMode ? "text-gray-100" : "text-gray-900"
+            }`}
+          >
             Quick Links
           </h3>
-          <ul className="space-y-2 md:space-y-3">
+          <ul className="space-y-2 text-sm">
             <li>
-              <Link to="/" className="hover:text-white transition">
+              <Link to="/" className="hover:text-blue-500 transition">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" className="hover:text-white transition">
+              <Link to="/about" className="hover:text-blue-500 transition">
                 About
               </Link>
             </li>
             <li>
-              <Link to="/pdf" className="hover:text-white transition">
+              <Link to="/pdf" className="hover:text-blue-500 transition">
                 PDF Materials
               </Link>
             </li>
             <li>
-              <Link to="/jeopardy1" className="hover:text-white transition">
+              <Link to="/jeopardy1" className="hover:text-blue-500 transition">
                 Jeopardy Game
               </Link>
             </li>
           </ul>
         </div>
 
-        {/* Column 3: Resources */}
+        {/* 🔹 Ijtimoiy tarmoqlar */}
         <div>
-          <h3 className="text-base md:text-lg font-semibold text-white mb-3 md:mb-4">
-            Resources
+          <h3
+            className={`font-semibold mb-3 ${
+              darkMode ? "text-gray-100" : "text-gray-900"
+            }`}
+          >
+            Follow Us
           </h3>
-          <ul className="space-y-2 md:space-y-3">
-            <li>
-              <a
-                href="https://gamma.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition"
-              >
-                Gamma Materials
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://vercel.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition"
-              >
-                Hosting (Vercel)
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://tailwindcss.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition"
-              >
-                TailwindCSS
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://react.dev/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition"
-              >
-                React Docs
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Column 4: Newsletter */}
-        <div>
-          <h3 className="text-base md:text-lg font-semibold text-white mb-3 md:mb-4">
-            Subscribe
-          </h3>
-          <p className="text-xs md:text-sm mb-3 md:mb-4">
-            Yangiliklardan xabardor bo‘lish uchun email manzilingizni qoldiring.
-          </p>
-          <form className="flex flex-col sm:flex-row gap-2 md:gap-3">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="px-3 py-2 rounded-lg focus:outline-none text-gray-800 text-sm flex-1"
-            />
-          </form>
+          <div className="flex justify-center md:justify-start space-x-4 text-xl">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              className="hover:text-blue-500 transition"
+            >
+              <FaFacebook />
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              className="hover:text-sky-400 transition"
+            >
+              <FaTwitter />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              className="hover:text-pink-500 transition"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              className="hover:text-blue-400 transition"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://github.com"
+              target="_blank"
+              className="hover:text-gray-400 transition"
+            >
+              <FaGithub />
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Divider */}
-      <div className="border-t border-gray-700 my-6 md:my-8"></div>
-
-      {/* Bottom section */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4 text-xs md:text-sm">
-        {/* Social icons */}
-        <div className="flex space-x-4 md:space-x-5 text-lg md:text-xl">
-          <a
-            href="https://facebook.com"
-            className="hover:text-blue-500 transition"
-          >
-            <FaFacebook />
-          </a>
-          <a
-            href="https://twitter.com"
-            className="hover:text-sky-400 transition"
-          >
-            <FaTwitter />
-          </a>
-          <a
-            href="https://instagram.com"
-            className="hover:text-pink-500 transition"
-          >
-            <FaInstagram />
-          </a>
-          <a
-            href="https://linkedin.com"
-            className="hover:text-blue-400 transition"
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="https://github.com"
-            className="hover:text-gray-400 transition"
-          >
-            <FaGithub />
-          </a>
-        </div>
-
-        {/* Extra links */}
-        <div className="flex flex-wrap justify-center space-x-4 md:space-x-6">
-          <a href="#" className="hover:text-white transition">
-            Privacy Policy
-          </a>
-          <a href="#" className="hover:text-white transition">
-            Terms of Service
-          </a>
-          <a href="#" className="hover:text-white transition">
-            Contact
-          </a>
-        </div>
-
-        {/* Copyright */}
-        <div className="text-gray-400 text-center">
-          © {new Date().getFullYear()} Resources Project. All rights reserved.
-        </div>
+      {/* 🔹 Pastki qism */}
+      <div
+        className={`border-t ${
+          darkMode ? "border-gray-700" : "border-gray-300"
+        } py-4 text-center text-xs md:text-sm`}
+      >
+        © {new Date().getFullYear()} <span className="font-semibold">Resources Project</span>. All rights reserved.
       </div>
     </footer>
   );

@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
 import { useDarkMode } from "../../context/DarkModeContext";
 
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { darkMode, toggleDarkMode } = useDarkMode();
   const location = useLocation();
 
@@ -17,31 +17,50 @@ export default function Navbar() {
     { title: "PDF", path: "/pdf" },
   ];
 
-  // sahifa o‘zgarsa menyuni yopish
+  // 📜 Scroll effekti (navbar soyasi va fon blur bo‘lishi)
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // 🔁 Sahifa o‘zgarsa menyuni yopish
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
 
   return (
     <nav
-      className={`sticky top-0 z-50 transition duration-300 shadow-md ${
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         darkMode
-          ? "bg-gray-900 text-gray-100"
-          : "bg-gradient-to-r from-blue-600 to-blue-700 text-white"
+          ? `backdrop-blur-md ${
+              scrolled ? "bg-gray-900/80 shadow-lg" : "bg-gray-900/60"
+            } text-gray-100`
+          : `backdrop-blur-md ${
+              scrolled
+                ? "bg-white/90 shadow-md text-gray-900"
+                : "bg-blue-600/90 text-white"
+            }`
       }`}
     >
       <div className="flex justify-between items-center max-w-7xl mx-auto px-6 py-4">
-        {/* Logo */}
+        {/* 🔹 Logo */}
         <Link
           to="/"
           className="text-2xl font-extrabold tracking-wide relative group flex gap-2 items-center"
         >
-          <img src="/icon.png" alt="" className="size-[40px] "/>
-          Resources
+          <img src="/icon.png" alt="logo" className="size-[40px]" />
+          <span
+            className={`transition-colors ${
+              darkMode ? "text-yellow-300" : "text-white"
+            }`}
+          >
+            Resources
+          </span>
           <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-yellow-300 group-hover:w-full transition-all duration-300"></span>
         </Link>
 
-        {/* Desktop Menu */}
+        {/* 💻 Desktop menu */}
         <div className="hidden md:flex space-x-8">
           {navItems.map((item, i) => (
             <NavLink
@@ -51,6 +70,8 @@ export default function Navbar() {
                 `relative px-2 py-1 text-lg transition duration-200 ${
                   isActive
                     ? "font-semibold text-yellow-300"
+                    : darkMode
+                    ? "hover:text-yellow-300"
                     : "hover:text-yellow-200"
                 }`
               }
@@ -60,17 +81,21 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Actions */}
+        {/* ☀️🌙 Toggle + Mobile menu button */}
         <div className="flex items-center space-x-4">
-          {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
             className="text-xl hover:scale-110 transition"
+            title="Toggle theme"
           >
-            {darkMode ? <FaSun className="text-yellow-400" /> : <FaMoon />}
+            {darkMode ? (
+              <FaSun className="text-yellow-400" />
+            ) : (
+              <FaMoon className="text-yellow-300" />
+            )}
           </button>
 
-          {/* Mobile Hamburger */}
+          {/* 🍔 Hamburger (mobile) */}
           <button
             className="md:hidden text-2xl hover:scale-110 transition"
             onClick={() => setIsOpen(!isOpen)}
@@ -80,13 +105,17 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu (slide-down) */}
+      {/* 📱 Mobile dropdown menu */}
       <div
-        className={`fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center space-y-6 text-lg font-medium transform transition-transform duration-500 ${
+        className={`fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center space-y-6 text-lg font-medium transform transition-all duration-500 ${
           isOpen
             ? "translate-y-0 opacity-100"
             : "-translate-y-full opacity-0 pointer-events-none"
-        } ${darkMode ? "bg-gray-900 text-gray-100" : "bg-blue-700 text-white"}`}
+        } ${
+          darkMode
+            ? "bg-gray-900 text-gray-100"
+            : "bg-gradient-to-b from-blue-600 to-blue-700 text-white"
+        }`}
       >
         {navItems.map((item, i) => (
           <NavLink
@@ -105,13 +134,13 @@ export default function Navbar() {
         ))}
         <Link
           to="/"
-          className={`mt-8 px-6 py-3 rounded-lg shadow-md transition ${
+          className={`mt-10 px-6 py-3 rounded-lg shadow-md transition ${
             darkMode
               ? "bg-yellow-400 text-gray-900 hover:bg-yellow-500"
-              : "bg-yellow-500 text-white hover:bg-yellow-600"
+              : "bg-yellow-400 text-gray-900 hover:bg-yellow-500"
           }`}
         >
-          ⬅️ Back to Home
+          ⬅ Back to Home
         </Link>
       </div>
     </nav>
