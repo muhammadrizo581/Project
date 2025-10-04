@@ -8,9 +8,8 @@ import JeopardyGame2 from "./jeopardy-game/JeopardyGame2";
 import JeopardyGame3 from "./jeopardy-game/JeopardyGame3";
 import About from "./about/About";
 import PdfFiles from "./pdf-files/PdfFiles";
-// import Part2 from "@/pages/Part2";
-// import Part3 from "@/pages/Part3";
-// import Jeopardy from "@/pages/Jeopardy";
+import PPTList from "./viewer/PPtTList";
+import PPTViewer from "./viewer/PPTViewer";
 
 const AppRouter = () => {
   return (
@@ -22,6 +21,10 @@ const AppRouter = () => {
         <Route path="jeopardy2" element={<JeopardyGame2 />} />
         <Route path="jeopardy3" element={<JeopardyGame3 />} />
         <Route path="pdf" element={<PdfFiles />} />
+
+        {/* ✅ PowerPoint sahifalari */}
+        <Route path="ppt" element={<PPTList />} />
+        <Route path="ppt-viewer" element={<PPTViewer />} />
       </Route>
     </Routes>
   );
