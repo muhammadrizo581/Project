@@ -10,6 +10,8 @@ export default function Navbar() {
   const location = useLocation();
 
   const navItems = [
+    { title: "Part 2", path: "/part2" },
+    { title: "Part 3", path: "/part3" },
     { title: "About", path: "/about" },
     { title: "Jeopardy Game", path: "/jeopardy1" },
     { title: "PDF", path: "/pdf" },

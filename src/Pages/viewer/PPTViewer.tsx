@@ -1,52 +1,70 @@
-import { useLocation, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
-const PPTViewer = () => {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const file = queryParams.get("file");
+const pptLinks: string[] = [
+  "https://docs.google.com/presentation/d/1cnfxe1lzfuguUE_NKC1Jk099r3_2hWMl/preview?slide=id.p1",
+  "https://docs.google.com/presentation/d/1kNp4_JyipI-RnAfdy_uVKmZimwOiVXET/preview?slide=id.p1",
+  "https://docs.google.com/presentation/d/16lwDwBzQBQuTDGTd14i1wj-b1WMcPFVy/preview?slide=id.p1",
+  "https://docs.google.com/presentation/d/1Gy46TWxyZeGZn0vAiNqjhzMwCEMvcehV/preview?slide=id.p1",
+  "https://docs.google.com/presentation/d/1oiXPGwrMWqNNUf98Eiu0yGuiDGFC9Vz1/preview?slide=id.p1",
+  "https://docs.google.com/presentation/d/1BToU2oRpQjpN-DCCs9RgYEZJwCCF8UwW/preview?slide=id.p1",
+  "https://docs.google.com/presentation/d/1vknvTrkAoAg7FJGbhzL7eGibKlo9Uf1a/preview?slide=id.p1",
+  "https://docs.google.com/presentation/d/1Mo6WrbJnLPIB6vviwDOB7urzddlEDwAj/preview?slide=id.p1",
+  "https://docs.google.com/presentation/d/1yjgbJ24wDIK_HmNPgYhGYtWoXWXhr-CK/preview?slide=id.p1"
+];
 
-  if (!file) {
+export default function PPTViewer() {
+  const { id } = useParams<{ id: string }>();
+  const index = parseInt(id || "0", 10) - 1;
+
+  if (index < 0 || index >= pptLinks.length) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen text-center text-gray-700 dark:text-gray-300">
-        <h1 className="text-3xl font-bold mb-4">⚠️ Fayl topilmadi</h1>
-        <Link
-          to="/ppt"
-          className="text-blue-600 dark:text-yellow-400 underline hover:opacity-80"
-        >
-          PowerPoint sahifasiga qaytish
-        </Link>
+      <div className="text-center text-red-500 mt-20">
+        <p>❌ Invalid presentation link.</p>
+        <Link to="/" className="text-blue-600 underline">Go Home</Link>
       </div>
     );
   }
 
-  const publicUrl = window.location.origin + file;
-  const officeViewerUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(
-    publicUrl
-  )}`;
+  // Tugmalar uchun indekslarni aniqlash
+  const prevId = index > 0 ? index : pptLinks.length - 1;
+  const nextId = index + 1 < pptLinks.length ? index + 2 : 1;
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900">
-      <div className="p-4 text-center bg-blue-600 dark:bg-gray-800 text-white font-semibold text-lg shadow-md">
-        📊 PowerPoint Viewer
-      </div>
-
+    <div className="w-full h-screen flex flex-col bg-gray-900">
+      {/* Presentation oynasi */}
       <iframe
-        title="PowerPoint Viewer"
-        src={officeViewerUrl}
-        className="flex-1 w-full"
-        style={{ minHeight: "90vh", border: "none" }}
+        src={pptLinks[index]}
+        allowFullScreen
+        className="flex-1 w-full border-0"
       ></iframe>
 
-      <div className="p-6 text-center">
+      {/* Navigatsiya paneli */}
+      <div className="flex justify-between flex-wrap gap-4 p-4 bg-gray-800 text-white text-center">
+        {/* Asosiy sahifaga qaytish */}
         <Link
-          to="/ppt"
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+          to="/"
+          className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition"
         >
-          ⬅️ Orqaga qaytish
+          🏠 Back to Home
         </Link>
+
+        {/* Oldingi va keyingi tugmalar */}
+        <div className="flex gap-3">
+          <Link
+            to={`/ppt/${prevId}`}
+            className="bg-gray-500 px-4 py-2 rounded-lg hover:bg-gray-600 transition"
+          >
+            ⬅ Previous
+          </Link>
+
+          <Link
+            to={`/ppt/${nextId}`}
+            className="bg-yellow-500 text-black px-4 py-2 rounded-lg hover:bg-yellow-400 transition"
+          >
+            ➡ Next
+          </Link>
+        </div>
       </div>
     </div>
   );
-};
-
-export default PPTViewer;
+}
