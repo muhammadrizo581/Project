@@ -15,8 +15,8 @@ const lessons = [
 
 export default function Lessons() {
   return (
-    <div className="mt-[90px]  flex flex-col items-center px-4 sm:px-6 py-12 text-white">
-      <h1 className="text-4xl sm:text-5xl font-extrabold text-yellow-400 mb-8 tracking-tight">
+    <div className="mt-[90px] min-h-screen flex flex-col items-center px-4 sm:px-6 py-12 bg-gray-800 text-white">
+      <h1 className="text-4xl sm:text-5xl font-extrabold text-yellow-400 mb-8 tracking-tight text-center">
         🎓 IT Video Lessons
       </h1>
 
@@ -25,7 +25,7 @@ export default function Lessons() {
       </p>
 
       {/* 🔹 Video Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2  px-[150px] gap-10 max-w-6xl w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-4xl">
         {lessons.map((lesson) => (
           <Link
             key={lesson.id}
@@ -37,7 +37,7 @@ export default function Lessons() {
               <img
                 src={`https://img.youtube.com/vi/${lesson.youtubeId}/hqdefault.jpg`}
                 alt={lesson.title}
-                className="w-full h-48 object-cover transition-transform duration-500 "
+                className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             </div>
