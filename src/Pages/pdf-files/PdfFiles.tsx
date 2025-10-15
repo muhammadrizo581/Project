@@ -17,7 +17,7 @@ const PdfFiles = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 px-4">
+    <div className="mt-[100px]  max-w-4xl mx-auto mt-10 px-4">
       <h1 className="text-2xl font-bold text-blue-700 mb-6">
         📂 PDF Materiallar
       </h1>

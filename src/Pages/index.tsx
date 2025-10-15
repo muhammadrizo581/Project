@@ -14,6 +14,8 @@ import Part3 from "./part3/Part3";
 import PPTViewer3 from "./viewer/PPTViewer3";
 import ScrollToTop from "../components/scroll-top/ScrollTop";
 import PPTViewer from "./viewer/PPTViewer";
+import Lessons from "./lessons/Lessons";
+import LessonDetail from "./lesson-datail/LessonDatail";
 
 const AppRouter = () => {
   return (
@@ -28,6 +30,8 @@ const AppRouter = () => {
           <Route path="jeopardy1" element={<JeopardyGame1 />} />
           <Route path="jeopardy2" element={<JeopardyGame2 />} />
           <Route path="jeopardy3" element={<JeopardyGame3 />} />
+          <Route path="lessons" element={<Lessons />} />
+          <Route path="/lessons/:id" element={<LessonDetail />} />
 
           
           <Route path="part2" element={<Part2 />} />

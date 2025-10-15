@@ -20,9 +20,9 @@ const pptList: PPTItem[] = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col items-center px-4 sm:px-6 py-12 text-center transition-colors duration-500 bg-gradient-to-b from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+    <div className="mt-[100px] min-h-screen flex flex-col items-center px-4 sm:px-6 py-12 text-center transition-colors duration-500 bg-gradient-to-b from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
       
-      {/* Header */}
+      
       <h1 className="text-4xl sm:text-5xl font-extrabold text-blue-700 dark:text-yellow-400 mb-6 tracking-tight drop-shadow-sm">
         💻 IT Presentations
       </h1>
@@ -34,7 +34,7 @@ export default function Home() {
         Click any unit to view it in fullscreen mode.
       </p>
 
-      {/* Presentations grid */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 max-w-6xl w-full">
         {pptList.map((ppt) => (
           <Link
@@ -42,7 +42,7 @@ export default function Home() {
             to={`/ppt/${ppt.id}`}
             className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 hover:-translate-y-2 hover:shadow-2xl transition-transform duration-300"
           >
-            {/* Image */}
+          
             <div className="relative overflow-hidden">
               <img
                 src={ppt.image}

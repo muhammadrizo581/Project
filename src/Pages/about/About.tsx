@@ -6,10 +6,10 @@ const About = () => {
 
   return (
     <div
-      className={`relative min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-500 ${
+      className={`mt-[100px] relative min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-500 ${
         darkMode
-          ? "bg-gray-900 text-gray-100"
-          : "bg-gradient-to-b from-blue-50 via-white to-blue-100 text-gray-900"
+          ? " bg-gray-900 text-gray-100"
+          : " bg-gradient-to-b from-blue-50 via-white to-blue-100 text-gray-900"
       }`}
     >
       {/* 🔹 Background video */}

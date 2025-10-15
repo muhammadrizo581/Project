@@ -16,7 +16,7 @@ const pptList: PPTItem[] = [
 
 export default function Part3() {
   return (
-    <div className="min-h-screen flex flex-col items-center px-4 sm:px-6 py-10 sm:py-14 text-center transition-colors duration-300 bg-gradient-to-b from-green-50 via-white to-green-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+    <div className="mt-[100px] min-h-screen flex flex-col items-center px-4 sm:px-6 py-10 sm:py-14 text-center transition-colors duration-300 bg-gradient-to-b from-green-50 via-white to-green-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
       
       {/* Title */}
       <h1 className="text-4xl sm:text-5xl font-extrabold text-green-700 dark:text-yellow-400 mb-6 drop-shadow-md tracking-tight">
