@@ -4,41 +4,50 @@ const lessons = [
   {
     id: 1,
     title: "Lesson 1: Introduction to IT",
-    videoId: "1cx2xGjdFFvDNKMaoKMm4D5IsnYIbvH7JAdN47hAvASk",
-    thumbnail: "/videos/01.png",
+    youtubeId: "wZfQEEO1UJc",
   },
   {
     id: 2,
     title: "Lesson 2: Computer Basics",
-    videoId: "1HdhblvIMoB86yPW_BHF0ZPMajOkwcLH0GrBHb94Fl0U",
-    thumbnail: "/videos/02.png",
+    youtubeId: "jLpQvErG3nA",
   },
 ];
 
 export default function Lessons() {
   return (
-    <div className="mt-[100px] min-h-screen flex flex-col items-center px-6 py-12 bg-gradient-to-b from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 transition-colors duration-500">
-      <h1 className="text-4xl sm:text-5xl font-extrabold text-blue-700 dark:text-yellow-400 mb-8">
-        🎥 Video Lessons
+    <div className="mt-[90px]  flex flex-col items-center px-4 sm:px-6 py-12 text-white">
+      <h1 className="text-4xl sm:text-5xl font-extrabold text-yellow-400 mb-8 tracking-tight">
+        🎓 IT Video Lessons
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-5xl w-full">
+      <p className="text-gray-400 max-w-2xl mb-12 text-center text-base sm:text-lg leading-relaxed">
+        Watch these YouTube lessons to learn IT concepts step by step.
+      </p>
+
+      {/* 🔹 Video Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2  px-[150px] gap-10 max-w-6xl w-full">
         {lessons.map((lesson) => (
           <Link
             key={lesson.id}
-            to={`/lessons/${lesson.id}`}
-            className="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-transform duration-300 active:scale-[0.98]"
+            to={`/lesson/${lesson.id}`}
+            className="group bg-gray-900 rounded-2xl overflow-hidden shadow-lg border border-gray-700 hover:scale-[1.03] transition-transform duration-300"
           >
-            <img
-              src={lesson.thumbnail}
-              alt={lesson.title}
-              className="w-full h-52 object-cover"
-            />
+            {/* 📺 Thumbnail */}
+            <div className="relative overflow-hidden">
+              <img
+                src={`https://img.youtube.com/vi/${lesson.youtubeId}/hqdefault.jpg`}
+                alt={lesson.title}
+                className="w-full h-48 object-cover transition-transform duration-500 "
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            </div>
+
+            {/* 📘 Title */}
             <div className="p-5 text-center">
-              <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+              <h2 className="text-lg sm:text-xl font-semibold text-yellow-400 mb-1">
                 {lesson.title}
               </h2>
-              
+              <p className="text-gray-400 text-sm">▶ Watch on YouTube</p>
             </div>
           </Link>
         ))}

@@ -31,7 +31,7 @@ const AppRouter = () => {
           <Route path="jeopardy2" element={<JeopardyGame2 />} />
           <Route path="jeopardy3" element={<JeopardyGame3 />} />
           <Route path="lessons" element={<Lessons />} />
-          <Route path="/lessons/:id" element={<LessonDetail />} />
+          <Route path="/lesson/:id" element={<LessonDetail />} />
 
           
           <Route path="part2" element={<Part2 />} />
