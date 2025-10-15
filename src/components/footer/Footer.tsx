@@ -20,7 +20,7 @@ const Footer = () => {
                 darkMode ? "text-yellow-400" : "text-blue-700"
               }`}
             >
-              Resources
+              EspWithMe
             </h2>
           </div>
           <p className="text-sm leading-relaxed text-center md:text-left">

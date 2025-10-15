@@ -57,7 +57,7 @@ export default function Navbar() {
                 darkMode ? "text-yellow-300" : "text-white"
               }`}
             >
-              Resources
+              EspWithMe
             </span>
             <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-yellow-300 group-hover:w-full transition-all duration-300"></span>
           </Link>
