@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const lessons = [
   {
@@ -15,17 +15,20 @@ const lessons = [
 
 export default function Lessons() {
   return (
-    <div className="mt-[90px] min-h-screen flex flex-col items-center px-4 sm:px-6 py-12 bg-gray-800 text-white">
+    <div className="mt-[90px] relative min-h-screen flex flex-col items-center px-4 sm:px-6 py-12 bg-gray-800 text-white">
       <h1 className="text-4xl sm:text-5xl font-extrabold text-yellow-400 mb-8 tracking-tight text-center">
         🎓 IT Video Lessons
-      </h1>
-
+      </h1>      
+      <NavLink to="/" className="">
+          <button className="absolute rounded-[15px] top-[50px] left-[50px] font-semibold p-4 bg-gray-900 hover:cursor-pointer ">Home page</button>  
+      </NavLink>
       <p className="text-gray-400 max-w-2xl mb-12 text-center text-base sm:text-lg leading-relaxed">
         Watch these YouTube lessons to learn IT concepts step by step.
       </p>
 
       {/* 🔹 Video Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-4xl">
+        
         {lessons.map((lesson) => (
           <Link
             key={lesson.id}
