@@ -65,7 +65,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
-            { id: 1, title: "Part 1", desc: "Basics of IT and Computing", path: "/" },
+            { id: 1, title: "Part 1", desc: "Basics of IT and Computing", path: "/part1" },
             { id: 2, title: "Part 2", desc: "Advanced IT Topics", path: "/part2" },
             { id: 3, title: "Part 3", desc: "Specialized Areas of Tech", path: "/part3" },
           ].map((item) => (
