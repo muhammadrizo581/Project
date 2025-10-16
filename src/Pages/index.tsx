@@ -29,7 +29,7 @@ const AppRouter = () => {
           <Route path="lessons" element={<Lessons />} />
           <Route path="/lesson/:id" element={<LessonDetail />} />
           <Route path="part1" element={<Part1 />} />
-          <Route path="part1/:id" element={<PPTViewer />} />
+          <Route path="ppt/:id" element={<PPTViewer />} />
           <Route path="part2" element={<Part2 />} />
           <Route path="ppt2/:id" element={<PPTViewer2 />} />
           <Route path="part3" element={<Part3 />} />
