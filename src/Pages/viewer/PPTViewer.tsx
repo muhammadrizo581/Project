@@ -3,6 +3,7 @@ import { useDarkMode } from "../../context/DarkModeContext";
 import { useEffect } from "react";
 
 const pptLinks: string[] = [
+  "https://docs.google.com/presentation/d/117WOPoJGYWvgsQVfWV5xtUcBZKsWcf5S/preview?slide=id.p1",
   "https://docs.google.com/presentation/d/1cnfxe1lzfuguUE_NKC1Jk099r3_2hWMl/preview?slide=id.p1",
   "https://docs.google.com/presentation/d/1kNp4_JyipI-RnAfdy_uVKmZimwOiVXET/preview?slide=id.p1",
   "https://docs.google.com/presentation/d/16lwDwBzQBQuTDGTd14i1wj-b1WMcPFVy/preview?slide=id.p1",

@@ -7,11 +7,12 @@ interface PPTItem {
 }
 
 const pptList: PPTItem[] = [
-  { id: 1, title: "Unit 1: Something 1", image: "/numbers3/1.png" },
-  { id: 2, title: "Unit 2: Something 2", image: "/numbers3/2.png" },
-  { id: 3, title: "Unit 3: Something 3", image: "/numbers3/3.png" },
-  { id: 4, title: "Unit 4: Something 4", image: "/numbers3/4.png" },
-  { id: 5, title: "Unit 5: Something 5", image: "/numbers3/5.png" },
+  { id: 1, title: "Jeoparty-game Part 3", image: "/numbers1/jeo.png" },
+  { id: 2, title: "Unit 1: Something 1", image: "/numbers3/1.png" },
+  { id: 3, title: "Unit 2: Something 2", image: "/numbers3/2.png" },
+  { id: 4, title: "Unit 3: Something 3", image: "/numbers3/3.png" },
+  { id: 5, title: "Unit 4: Something 4", image: "/numbers3/4.png" },
+  { id: 6, title: "Unit 5: Something 5", image: "/numbers3/5.png" },
 ];
 
 export default function Part3() {
